@@ -1,16 +1,21 @@
-import type { PropsWithChildren } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 import { Container, Flex } from '@chakra-ui/react'
 import Footer from './Footer'
-import NavBar from './NavBar'
+import NavBar, { type NavLinkConfig } from './NavBar'
 
-const Layout = ({ children }: PropsWithChildren) => {
+type LayoutProps = PropsWithChildren<{
+  navLinks?: NavLinkConfig[]
+  footerBranding?: ReactNode
+}>
+
+const Layout = ({ children, navLinks, footerBranding }: LayoutProps) => {
   return (
     <Flex direction="column" minH="100vh" bg="gray.50">
-      <NavBar />
+      <NavBar links={navLinks} />
       <Container as="main" maxW="6xl" flex={1} py={{ base: 8, md: 12 }}>
         {children}
       </Container>
-      <Footer />
+      <Footer branding={footerBranding} />
     </Flex>
   )
 }
