@@ -1,8 +1,24 @@
+import type { ReactNode } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { Box, Container, Flex, Heading, HStack, Link, useColorModeValue } from '@chakra-ui/react'
 import { toolRegistry } from '../routes/ToolRegistry'
 
-const NavBar = () => {
+export type NavLinkConfig = {
+  label: string
+  to: string
+  rightSlot?: ReactNode
+}
+
+type NavBarProps = {
+  links?: NavLinkConfig[]
+}
+
+const defaultLinks: NavLinkConfig[] = [
+  { label: 'Home', to: '/' },
+  { label: 'Tools', to: '/#tools' },
+]
+
+const NavBar = ({ links = defaultLinks }: NavBarProps) => {
   const bg = useColorModeValue('white', 'gray.900')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
   const primaryTool = toolRegistry[0]
@@ -17,12 +33,12 @@ const NavBar = () => {
             </Link>
           </Heading>
           <HStack spacing={6} fontWeight="medium">
-            <Link as={RouterLink} to="/">
-              Home
-            </Link>
-            <Link as={RouterLink} to="/#tools">
-              Browse tools
-            </Link>
+            {links.map((link) => (
+              <Link key={link.to} as={RouterLink} to={link.to}>
+                {link.label}
+                {link.rightSlot}
+              </Link>
+            ))}
             {primaryTool && (
               <Link as={RouterLink} to={`/tools/${primaryTool.slug}`} color="blue.500">
                 Open {primaryTool.name}
