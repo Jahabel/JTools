@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-import LandingPage from './pages/LandingPage'
-import ToolDetailPage from './pages/ToolDetailPage'
+import Landing from './routes/Landing'
+import ToolPage from './routes/ToolPage'
 
 function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/tools/:slug" element={<ToolDetailPage />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/tools/:slug" element={<ToolPage />} />
       </Routes>
     </Layout>
   )
