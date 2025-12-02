@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Box, Button, Code, Heading, HStack, Stack, Text, Textarea, Tooltip, useToast } from '@chakra-ui/react'
+import ToolShell from '../../components/ToolShell'
+import type { ToolDefinition } from '../../routes/ToolRegistry'
 
-const JsonFormatter = () => {
+const JsonFormatterContent = () => {
   const [input, setInput] = useState('{\n  "message": "Hello, world!"\n}')
   const [formatted, setFormatted] = useState('')
   const [error, setError] = useState('')
@@ -80,6 +82,29 @@ const JsonFormatter = () => {
       </Stack>
     </Stack>
   )
+}
+
+const JsonFormatter = () => {
+  return (
+    <ToolShell
+      title={jsonFormatterDefinition.name}
+      description={jsonFormatterDefinition.description}
+      tags={jsonFormatterDefinition.tags}
+      hero={jsonFormatterDefinition.icon}
+    >
+      <JsonFormatterContent />
+    </ToolShell>
+  )
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const jsonFormatterDefinition: ToolDefinition = {
+  slug: 'json-formatter',
+  name: 'JSON Formatter',
+  description: 'Format, pretty-print, and minify JSON payloads for easy sharing.',
+  tags: ['data', 'formatting', 'json'],
+  icon: '🧩',
+  component: JsonFormatter,
 }
 
 export default JsonFormatter
