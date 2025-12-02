@@ -40,13 +40,6 @@ const JsonFormatter = () => {
 
   return (
     <Stack spacing={6}>
-      <Stack spacing={2}>
-        <Heading size="lg">JSON Formatter</Heading>
-        <Text color="gray.600">
-          Paste your JSON payload, format it with spacing, or minify it for transport.
-        </Text>
-      </Stack>
-
       <Stack spacing={4}>
         <Textarea
           value={input}

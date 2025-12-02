@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, Text, Textarea } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Input, Stack, Text, Textarea } from '@chakra-ui/react'
 
 const UrlEncoder = () => {
   const [input, setInput] = useState('https://example.com?message=hello world')
@@ -17,11 +17,6 @@ const UrlEncoder = () => {
 
   return (
     <Stack spacing={6}>
-      <Stack spacing={2}>
-        <Heading size="lg">URL Encoder / Decoder</Heading>
-        <Text color="gray.600">Quickly encode or decode URL query strings and payload values.</Text>
-      </Stack>
-
       <Stack spacing={4}>
         <FormControl>
           <FormLabel>Value</FormLabel>
