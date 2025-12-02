@@ -1,18 +1,5 @@
 import { Link as RouterLink, useParams } from 'react-router-dom'
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Button,
-  Heading,
-  HStack,
-  Stack,
-  Tag,
-  Text,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react'
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Heading, Stack, Text } from '@chakra-ui/react'
 import type { ToolDefinition } from './ToolRegistry'
 import { getToolBySlug } from './ToolRegistry'
 
@@ -52,29 +39,6 @@ const ToolPage = ({ initialTool }: ToolPageProps) => {
           <BreadcrumbLink>{tool.name}</BreadcrumbLink>
         </BreadcrumbItem>
       </Breadcrumb>
-
-      <Stack spacing={3}>
-        <HStack spacing={3} align="center">
-          {tool.icon && (
-            <Box boxSize={10} borderRadius="full" bg="blue.50" display="grid" placeItems="center" fontSize="xl">
-              {tool.icon}
-            </Box>
-          )}
-          <Stack spacing={1}>
-            <Heading size="lg">{tool.name}</Heading>
-            <Text color="gray.600">{tool.description}</Text>
-          </Stack>
-        </HStack>
-        <Wrap spacing={2}>
-          {tool.tags.map((tag) => (
-            <WrapItem key={tag}>
-              <Tag colorScheme="blue" variant="subtle">
-                {tag}
-              </Tag>
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Stack>
 
       <ToolComponent />
     </Stack>

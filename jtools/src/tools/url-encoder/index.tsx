@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input, Stack, Text, Textarea } from '@chakra-ui/react'
+import ToolShell from '../../components/ToolShell'
+import type { ToolDefinition } from '../../routes/ToolRegistry'
 
-const UrlEncoder = () => {
+const UrlEncoderContent = () => {
   const [input, setInput] = useState('https://example.com?message=hello world')
   const [output, setOutput] = useState('')
 
@@ -46,12 +48,35 @@ const UrlEncoder = () => {
 
       <Box borderWidth={1} borderColor="gray.200" borderRadius="md" p={4} bg="white">
         <Text fontSize="sm" color="gray.600">
-          Encoding replaces unsafe URL characters with percent-encoded values so they can be safely transported as part
-          of a query string. Decoding reverses the process to make the text human readable again.
+          Encoding replaces unsafe URL characters with percent-encoded values so they can be safely transported as part of a query
+          string. Decoding reverses the process to make the text human readable again.
         </Text>
       </Box>
     </Stack>
   )
+}
+
+const UrlEncoder = () => {
+  return (
+    <ToolShell
+      title={urlEncoderDefinition.name}
+      description={urlEncoderDefinition.description}
+      tags={urlEncoderDefinition.tags}
+      hero={urlEncoderDefinition.icon}
+    >
+      <UrlEncoderContent />
+    </ToolShell>
+  )
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const urlEncoderDefinition: ToolDefinition = {
+  slug: 'url-encoder',
+  name: 'URL Encoder / Decoder',
+  description: 'Encode or decode URL query parameters to keep web requests tidy.',
+  tags: ['web', 'networking', 'encoding'],
+  icon: '🔗',
+  component: UrlEncoder,
 }
 
 export default UrlEncoder
