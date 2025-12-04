@@ -282,7 +282,7 @@ const Landing = () => {
                   ))}
                 </Wrap>
               </CardBody>
-              <CardFooter pt={0} justify="space-between" align="center">
+              <CardFooter pt={0} justify="space-between" alignItems="center">
                 <Text fontSize="sm" color="gray.600">
                   Quick actions
                 </Text>
