@@ -4,6 +4,7 @@ import { passwordToolDefinition } from '../tools/password'
 import { hashToolDefinition } from '../tools/hash'
 import { urlEncoderDefinition } from '../tools/url-encoder'
 import { uuidGeneratorDefinition } from '../tools/uuid-generator'
+import { loremIpsumDefinition } from '../tools/lorem-ipsum'
 
 export type ToolDefinition = {
   slug: string
@@ -20,6 +21,7 @@ export const toolRegistry: ToolDefinition[] = [
   passwordToolDefinition,
   urlEncoderDefinition,
   uuidGeneratorDefinition,
+  loremIpsumDefinition,
 ]
 
 const validateToolRegistry = (tools: ToolDefinition[]) => {
