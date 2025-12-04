@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react'
 import { jsonFormatterDefinition } from '../tools/json-formatter'
+import { passwordToolDefinition } from '../tools/password'
 import { urlEncoderDefinition } from '../tools/url-encoder'
 import { uuidGeneratorDefinition } from '../tools/uuid-generator'
 
@@ -14,6 +15,7 @@ export type ToolDefinition = {
 
 export const toolRegistry: ToolDefinition[] = [
   jsonFormatterDefinition,
+  passwordToolDefinition,
   urlEncoderDefinition,
   uuidGeneratorDefinition,
 ]
