@@ -6,15 +6,23 @@ import type { ToolDefinition } from '../../routes/ToolRegistry'
 const UrlEncoderContent = () => {
   const [input, setInput] = useState('https://example.com?message=hello world')
   const [output, setOutput] = useState('')
+  const [error, setError] = useState('')
 
   const isDisabled = useMemo(() => !input.trim(), [input])
 
   const encodeValue = () => {
+    setError('')
     setOutput(encodeURIComponent(input))
   }
 
   const decodeValue = () => {
-    setOutput(decodeURIComponent(input))
+    try {
+      setOutput(decodeURIComponent(input))
+      setError('')
+    } catch {
+      setOutput('')
+      setError('Unable to decode: provide a valid percent-encoded string.')
+    }
   }
 
   return (
@@ -39,6 +47,12 @@ const UrlEncoderContent = () => {
             Decode
           </Button>
         </Stack>
+
+        {error && (
+          <Text color="red.500" fontSize="sm" role="alert">
+            {error}
+          </Text>
+        )}
 
         <FormControl>
           <FormLabel>Result</FormLabel>
