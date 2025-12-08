@@ -6,6 +6,11 @@ RewriteBase /
 RewriteRule ^index\.html$ - [L]
 
 # Allow existing files/folders to passthrough
+RewriteEngine On
+RewriteBase /
+
+# Allow direct requests for existing files or directories
+RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule . - [L]
@@ -16,3 +21,5 @@ RewriteRule . /index.html [L]
 # Safety net: treat 404s as SPA navigation
 ErrorDocument 404 /index.html
 DirectoryIndex index.html
+# Fallback all other requests to the SPA entrypoint
+RewriteRule . /index.html [L]
