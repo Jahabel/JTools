@@ -1,0 +1,18 @@
+# SPA routing rules for LiteSpeed/Apache hosts
+RewriteEngine On
+RewriteBase /
+
+# Serve the entry file when directly requested
+RewriteRule ^index\.html$ - [L]
+
+# Allow existing files/folders to passthrough
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule . - [L]
+
+# Fallback everything else to the SPA entrypoint
+RewriteRule . /index.html [L]
+
+# Safety net: treat 404s as SPA navigation
+ErrorDocument 404 /index.html
+DirectoryIndex index.html
