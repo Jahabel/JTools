@@ -1,4 +1,5 @@
 1. Zip the contents of the `release/` folder (or upload the folder directly if allowed by your host).
 2. In cPanel File Manager, navigate to your document root (commonly `public_html` or a subfolder for your site).
-3. Upload the zip file and extract it there so `index.html` and the `assets` folder sit directly in the target directory.
-4. Visit your domain or subdomain to confirm the site loads correctly.
+3. Upload the zip file and extract it there so `index.html`, `.htaccess`, and the `assets` folder sit directly in the target directory.
+4. The included `.htaccess` provides a single-page-app rewrite so deep links like `/tools/json-formatter` resolve to the app entrypoint.
+5. Visit your domain or subdomain to confirm the site loads correctly.
