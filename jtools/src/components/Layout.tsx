@@ -55,7 +55,7 @@ const Layout = ({ children, navLinks, footerBranding }: LayoutProps) => {
   return (
     <Flex direction="column" minH="100vh" bg="gray.50">
       <NavBar links={navLinks} />
-      <Container as="main" maxW="6xl" flex={1} py={{ base: 8, md: 12 }}>
+      <Container as="main" maxW="7xl" flex={1} py={{ base: 10, md: 14 }}>
         {children}
       </Container>
       <Footer branding={footerBranding} />
