@@ -1,0 +1,6 @@
+Deploying version: alpha/v2
+
+1) Package the contents of this folder (alpha/v2) into a zip, or upload the folder contents directly if your host allows.
+2) In cPanel File Manager, open the document root for your domain/subdomain (e.g., public_html or a subfolder such as public_html/tools).
+3) Upload the zip and extract it there so index.html and the assets folder sit directly in the chosen root (no extra nesting).
+4) Visit your domain/subdomain to verify the site loads.
