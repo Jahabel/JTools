@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+# Allow direct requests for existing files or directories
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule . - [L]
+
+# Fallback all other requests to the SPA entrypoint
+RewriteRule . /index.html [L]
